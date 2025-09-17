@@ -94,8 +94,10 @@ def buyIron(gold):
     num_bought = int(input("How many iron? "))
     price = 2
     total = price * num_bought
+    if num_bought < 0:
+        print("Not a valid amount. Please try again.")
     # checks for insufficient gold
-    if total > gold:
+    elif total > gold:
         print("You don't have enough gold.")
     else:
         print("Successfully bought", num_bought, "iron(s)")
@@ -111,8 +113,10 @@ def buyWood(gold):
     num_bought = int(input("How many woods? "))
     price = 1
     total = price * num_bought
+    if num_bought < 0:
+        print("Not a valid amount. Please try again.")
     # checks for insufficient gold
-    if total > gold:
+    elif total > gold:
         print("You don't have enough gold.")
     else:
         print("Successfully bought", num_bought, "wood(s)")
@@ -125,30 +129,37 @@ def buyWood(gold):
 # crafting menu
 def craft_weapons():
     global day, wood, iron
-    print()
-    print("========== CRAFTING ==========")
-    print("Blacksmith Ed, what do you want to craft?")
-    print()
+    while True:
+        print()
+        print("========== CRAFTING ==========")
+        print("Blacksmith Ed, what do you want to craft?")
+        print()
 
-    print("Current Iron:", iron)
-    print("Current Wood:", wood)
-    print()
+        print("Current Iron:", iron)
+        print("Current Wood:", wood)
+        print()
 
-    # menu and the requirement for crafting
-    print("[1] Sword [2 Iron, 1 Wood]")
-    print("[2] Spear [1 Iron, 2 Wood]")
-    print("[3] Axe [3 Iron, 2 Wood]")
-    choice = int(input("Choice: "))
+        # menu and the requirement for crafting
+        print("[1] Sword [2 Iron, 1 Wood]")
+        print("[2] Spear [1 Iron, 2 Wood]")
+        print("[3] Axe [3 Iron, 2 Wood]")
+        print("[0] Exit")
+        choice = int(input("Choice: "))
 
-    # calls the function based on the choice
-    if choice == 1:
-        craftSword()
-    elif choice == 2:
-        craftSpear()
-    elif choice == 3:
-        craftAxe()
-    else: 
-        print("Not in choices. Please try again.")
+        # calls the function based on the choice
+        if choice == 1:
+            craftSword()
+            break
+        elif choice == 2:
+            craftSpear()
+            break
+        elif choice == 3:
+            craftAxe()
+            break
+        elif choice == 0:
+            break
+        else: 
+            print("Not in choices. Please try again.")
 
 # function for crafting sword
 def craftSword():
