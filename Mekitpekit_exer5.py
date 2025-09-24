@@ -43,38 +43,49 @@ def game():
         else:
             print("Please choose from the choices only.")
   
-def playGame():    
-    attempts = 1
+def playGame():  
     copy_words = words.copy()
-    while True:
+    while True:  
+
+        attempts = 1
         random_word = random.choice(copy_words)
-        random_display = list("_ " * len(random_word))
-        print("===== Attempt", attempts, "=====")
+        random_display = list("_" * len(random_word))
         
-        for i in random_display:
-            print(i, end="")
+        while True:
+            
+            print("===== Attempt", attempts, "=====")
+            print("\t", end="")
+            for i in random_display:
+                print(i, end=" ")
+            
+            print()
 
-        guess = input("Guess: ")
+            guess = input("Guess: ")
 
-        if guess == random_word:
-            print("So good, you got it in", attempts, "attempts")
-            choice = input("Do you want to play again? (y/n): ")
-            if choice == "y":
-                copy_words.remove(random_word)
-                attempts = 1
-                continue
-            else:
-                break
-        else: 
-            for i in range(len(guess)):
-                if guess[i] in random_word:
-                    for j in range(len(random_word)):
-                        if guess[i] == random_word[j]:
-                            random_display[j] = guess[i]
+            if guess == random_word:
+                print("============================")
+                print("\t", guess)
+                print("So good, you got it in", attempts, "attempts")
+                choice = input("Do you want to play again? (y/n): ")
+                if choice == "y":
+                    copy_words.remove(random_word)
+                    if len(copy_words) == 0:
+                        print("No words left in the word pool.")
+                        return
+                    break
+                else:
+                    return
+            else: 
+                for i in range(len(random_display)):
+                    if guess[i] in random_word:
+                        if guess[i] == random_word[i]:
+                            random_display[i] = guess[i]
                         else:
-                            random_display[j] = "*"
+                            random_display[i] = "*"
+                    else:
+                        random_display[i] = "-"
 
-        
+            attempts += 1
 
 
 def managePool():
@@ -116,6 +127,6 @@ def managePool():
         else:
             print("Please choose from the choices only.")
 
-words = []
+words = ['keep', 'feel', 'reel']
 
 game()
