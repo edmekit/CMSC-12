@@ -1,8 +1,8 @@
-
-
-
-
-
+'''
+Edmarc Justine B. Mekitpekit
+Y-1L
+Python program where you can play a terminal version of wordle, and you have full control of the word pool
+'''
 
 import random
 def toLower(str):
