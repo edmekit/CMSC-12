@@ -6,7 +6,10 @@ Y-1L
 books = [{
     'name': "Sherlock Holmes",
     'author': "Arthur Conan Doyle",
-    'status': "Read"
+    'status': "Read",
+    'start_date': '2025-09-28',
+    'end_date': '---------',
+    'notes': "---------"
 }]
 
 def main ():
@@ -34,6 +37,7 @@ def main ():
             addNotes()
         elif choice == 0:
             print("Goodbye!")
+            break
         else:
             print("Please choose from the choices only.")
 
@@ -47,6 +51,9 @@ def showAll():
         print("Name:", books[i]['name'])
         print("Author:", books[i]['author'])
         print("Status:", books[i]['status'])
+        print("Start Date:", books[i]['start_date'])
+        print("End Date:", books[i]['end_date'])
+        print("Notes:", books[i]['notes'])
         print()
 
 def addBook():
@@ -57,11 +64,17 @@ def addBook():
     name = input("Name: ")
     author = input("Author: ")
     status = input("Status: ")
+    start_date = input("Start Date: ")
+    end_date = input("End Date: ")
+    notes = input("Notes: ")
 
     books.append({
         'name': name,
         'author': author,
         'status': status,
+        'start_date': start_date,
+        'end_date': end_date,
+        'notes': notes
     })
 
     print()
@@ -73,19 +86,46 @@ def addNotes():
     print("===== Add Notes =====")
     print()
 
-    book = int(input("Which book to add notes: "))
-    print("Book", book)
-    print("Name:", books[book - 1]['name'])
-    print("Author:", books[book - 1]['author'])
-    print("Status:", books[book - 1]['status'])
-    print()
+    book = int(input("Which book to add notes: ")) - 1
+    print("Book", book + 1)
+    print("Name:", books[book]['name'])
+    print("Author:", books[book]['author'])
+    print("Status:", books[book]['status'])
+    print("Start Date:", books[book]['start_date'])
+    print("End Date:", books[book]['end_date'])
+    print("Notes:", books[book]['notes'])
 
     notes = input("Notes: ")
 
-    books[book - 1]['notes'] = notes
+    books[book]['notes'] = notes
 
     print()
     print("Notes added successfully!")
+    print()
+
+def editStatus():
+    print()
+    print("===== Edit Status =====")
+    print()
+
+    book = int(input("Which book to edit status: ")) - 1
+    print("Book", book + 1)
+    print("Name:", books[book]['name'])
+    print("Author:", books[book]['author'])
+    print("Status:", books[book]['status'])
+    print("Start Date:", books[book]['start_date'])
+    print("End Date:", books[book]['end_date'])
+    print("Notes:", books[book]['notes'])
+    print()
+
+    status = input("Status: ")
+    date_end = input("End Date: ")
+
+    books[book]['status'] = status
+    books[book]['end_date'] = date_end
+
+    print()
+    print("Status edited successfully!")
     print()
     
 main()
