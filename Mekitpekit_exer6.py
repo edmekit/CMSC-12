@@ -1,6 +1,7 @@
 '''
 Edmarc Justine B. Mekitpekit
 Y-1L
+Python program where you can manage a terminal library, you can add books, view all books, change book status, add note to book, remove book, clear book catalogue.
 '''
 
 def menu():
@@ -37,14 +38,14 @@ def menu():
 			print("Have a great day hihi!")
 			break
 		else:
-			print("PLease choose from 0-6")
+			print("PLease choose from 0-6") # input check
 
 def addBook(lib):
 	print("========== ADD A BOOK ==========")
 	statuses = ["to-read", "currently-reading", "finished"]
 	while True:
 		book_code = input("Book code: ") 
-		if book_code in lib:
+		if book_code in lib: # check if book code already exist
 			print("Book code already exist.")
 			continue
 		break
@@ -54,14 +55,14 @@ def addBook(lib):
 	date_bought = input("Date bought: ")
 	while True: 
 		status = input("Status: ")
-		if status in statuses:
+		if status in statuses: # check if input status is valid
 			break
 		else:
 			print("Please choose from to-read, currently-reading, finished.")
 	print("Book added hihi.")
 	print("==========================")
 
-	lib[book_code] = [
+	lib[book_code] = [  # add new key to the dictionary
 		book_name,
 		author,
 		price,
@@ -74,9 +75,9 @@ def addBook(lib):
 
 def viewCatalogue(lib):
 	print("========== MY LIBRARY ==========")
-	if len(lib) == 0:
+	if len(lib) == 0: 
 		print("No books in library. Add some.")
-	for i in lib:
+	for i in lib: # loop through the keys getting the respective values
 		print(i)
 		print("Book name:", lib[i][0])
 		print("Author:", lib[i][1])
@@ -84,7 +85,7 @@ def viewCatalogue(lib):
 		print("Date bought:", lib[i][3])
 		print("Status:", lib[i][4])
 		print("My notes: ")
-		if len(lib[i][5]) == 0:
+		if len(lib[i][5]) == 0: # check if the list for notes is empty
 			print("\tNo notes yet.")
 		else: 
 			for note in lib[i][5]:
@@ -100,12 +101,12 @@ def changeStatus(lib):
 		print("New status of", lib[book_code][0], end="")
 		new_stat = input(" is: ")
 		while True:
-			if new_stat in statuses: 
+			if new_stat in statuses: # check if input status is valid
 				lib[book_code][4] = new_stat
 				print("Status changed.")
 				print("===============================")
 				return lib
-			else: 
+			else:  # if not valid
 				print("Status can only be to-read, currently-reading, finished. PLease try again")
 				new_stat = input("New status: ")
 	else:
@@ -116,10 +117,10 @@ def changeStatus(lib):
 def addNote(lib):
 	print("======== ADD A NOTE ========")
 	book_code = input("Enter a Book to add a note to: ")
-	if book_code in lib:
+	if book_code in lib: # check if book code exist
 		print("Add note to", lib[book_code][0], end=" ")
 		new_note = input(": ")
-		lib[book_code][5].append(new_note)
+		lib[book_code][5].append(new_note) # add to the list for notes
 		print("Note added hihi.")
 		print("===============================")
 		return lib
@@ -133,7 +134,7 @@ def removeBook(lib):
 	book_code = input("Select which book to remove: ")
 	if book_code in lib:	
 		print("Deleted", lib[book_code][0], "by", lib[book_code][1])
-		del lib[book_code]
+		del lib[book_code] # delete the key in dictionary
 		print("===============================")
 		return lib
 	else:
@@ -142,7 +143,7 @@ def removeBook(lib):
 		return lib
 
 def clearLibrary(lib):
-	lib = {}
+	lib = {} # clear the dictionary
 	print("Library is now empty..")
 	return lib
 
