@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Customer Information</legend>
+            <label for="name">Name:</label><input type="text" name="customerName" id="name" required>
+            <br>
+            <label for="mobileNum">Mobile Number:</label> <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" required>
+            <br>
+            <label for="emailAdd">Email Address:</label> <input type="email" name="emailadd" id="emailAdd" required>
+        </fieldset>
+        <fieldset>
+            <legend>Party Details</legend>
+
+            <label for="numPeople">Number of People</label>
+            <input type="text" name="numpeople" id="numPeople">
+            <br>
+
+            Appetizer
+            <br>
+            <input type="radio" name="appetizer" id="salad" value="Salad" checked>
+            <label for="salad">Salad</label>
+            <br>
+            <input type="radio" name="appetizer" id="bread" value="Bread">
+            <label for="bread">Bread w/Dip</label>
+            <br>
+            <input type="radio" name="appetizer" id="tomato" value="Tomato">
+            <label for="tomato">Tomato Surprise</label>
+            <br>
+            <input type="radio" name="appetizer" id="mushroom" value="Mushroom">
+            <label for="mushroom">Mushroom Bites</label>
+            <br>
+
+            Main Dishes
+            <br>
+            <input type="checkbox" name="mainDish" id="roast" value="roastBeef">
+            <label for="roast">Roast Beef</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="beef" value="beefSteak">
+            <label for="beef">Beef Steak</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="pork" value="porkSpareribs">
+            <label for="pork">Pork Spareribs</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="marbella" value="porkMarbella">
+            <label for="marbella">Pork Marbella</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="chicken" value="grilledChicken">
+            <label for="chicken">Grilled Chicken</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="roastchick" value="roastChicken">
+            <label for="roastchick">Roast Chicken</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="broiled" value="broiledSalmon">
+            <label for="broiled">Broiled Salmon</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="grilledsalmon" value="grilledSalmon">
+            <label for="grilledsalmon">Grilled Salmon</label>
+            <br>
+
+            Desserts
+            <br>
+            <input type="checkbox" name="dessert" id="choccake" value="moltenChocolateCake">
+            <label for="choccake">Molten Chocolate Cake</label>
+            <br>
+            <input type="checkbox" name="dessert" id="velvetcake" value="velvetCake">
+            <label for="velvetcake">Red Velvet Cake</label>
+            <br>
+            <input type="checkbox" name="dessert" id="lemonbars" value="lemonBars">
+            <label for="lemonbars">Lemon Bars</label>
+            <br>
+            <input type="checkbox" name="dessert" id="peanutbars" value="peanutBars">
+            <label for="peanutbars">Peanut Butter Bars</label>
+            <br>
+            <input type="checkbox" name="dessert" id="bukopie" value="bukoPie">
+            <label for="bukopie">Buko Pie</label> 
+            <br>
+            <input type="checkbox" name="dessert" id="meringue" value="Meringue">
+            <label for="maringue">Lemon Meringue Pie</label>
+            <br>
+
+            Type of Rice
+            <br>
+            <input type="radio" name="rice" id="plain" value="plainrice" checked>
+            <label for="plain">Plain</label>
+            <br>
+            <input type="radio" name="rice" id="garlic" value="garlicrice">
+            <label for="garlic">Garlic</label> 
+            <br>
+            <input type="radio" name="rice" id="bagooong" value="bagoongrice">
+            <label for="bagooong">Bagoong</label> 
+            <br>
+
+            Drinks
+            <br>
+            <input type="checkbox" name="drinks" id="cucumber" value="cucumberlemonade" checked>
+            <label for="cucumber">Cucumber Lemonade</label> 
+            <br>
+            <input type="checkbox" name="drinks" id="icedtea" value="redicedtea">
+            <label for="icedtea">Red Iced Tea</label> 
+            <br>
+            <input type="checkbox" name="drinks" id="mangojuice" value="ripemangojuice">
+            <label for="mangojuice">Ripe Mango Juice</label> 
+        </fieldset>
+        <fieldset>
+            <legend>Delivery Details</legend>
+            <label for="venue">Venue Address</label>
+            <br>
+            <textarea rows="5" cols="20" required>Address here...</textarea>
+            <br>
+            <label for="partydate">Party Date</label>
+            <input type="date" id="partydate" required>
+            <br>
+            <label for="partytime">Party Time</label>
+            <input type="time" id="partytime" required>
+        </fieldset>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+    
+</body>
+</html>
