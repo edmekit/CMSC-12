@@ -1,3 +1,9 @@
+<!--
+Edmarc Justine B. Mekitpekit
+Y-1L
+HTML program that handles a party reservation form, uses checkbox buttons and asks for required inputs like name and party date and time.
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,11 +13,14 @@
     <form>
         <fieldset>
             <legend>Customer Information</legend>
-            <label for="name">Name:</label><input type="text" name="customerName" id="name" required>
+            <label for="name">Name:</label>
+            <input type="text" name="customerName" id="name" required>
             <br>
-            <label for="mobileNum">Mobile Number:</label> <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" required>
+            <label for="mobileNum">Mobile Number:</label>
+            <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" required>
             <br>
-            <label for="emailAdd">Email Address:</label> <input type="email" name="emailadd" id="emailAdd" required>
+            <label for="emailAdd">Email Address:</label>
+            <input type="email" name="emailadd" id="emailAdd" required>
         </fieldset>
         <fieldset>
             <legend>Party Details</legend>
@@ -110,16 +119,16 @@
             <legend>Delivery Details</legend>
             <label for="venue">Venue Address</label>
             <br>
-            <textarea rows="5" cols="20" required>Address here...</textarea>
+            <textarea name="address" id="venue" rows="5" cols="20" required>Address here...</textarea>
             <br>
             <label for="partydate">Party Date</label>
-            <input type="date" id="partydate" required>
+            <input type="date" name="date" id="partydate" required>
             <br>
             <label for="partytime">Party Time</label>
-            <input type="time" id="partytime" required>
+            <input type="time" name="time" id="partytime" required>
         </fieldset>
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+        <button type="submit" name="submitbtn">Submit</button>
+        <button type="reset" name="resetbtn">Reset</button>
     </form>
     
 </body>
