@@ -17,10 +17,10 @@ HTML program that handles a party reservation form, uses checkbox buttons and as
             <input type="text" name="customerName" id="name" required>
             <br>
             <label for="mobileNum">Mobile Number:</label>
-            <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" required>
+            <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" pattern="^09\d{9}" required >
             <br>
             <label for="emailAdd">Email Address:</label>
-            <input type="email" name="emailadd" id="emailAdd" required>
+            <input type="email" name="emailadd" id="emailAdd" required> 
         </fieldset>
         <fieldset>
             <legend>Party Details</legend>
