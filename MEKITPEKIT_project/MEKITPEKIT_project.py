@@ -1,5 +1,7 @@
 import arts 
-
+logbook = {}
 print(arts.logo)
 
-print("Welcome to the Mekitpekit's RPG Game!")
+def main():
+    while True:
+        
