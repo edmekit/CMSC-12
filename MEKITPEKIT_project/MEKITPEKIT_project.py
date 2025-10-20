@@ -1,7 +1,30 @@
-import arts 
+import arts, plants, logbook, supplier
 logbook = {}
+
 print(arts.logo)
 
-def main():
-    while True:
+while True:
+	print("Welcone!")
+	print("What would you like to do?")
+	print()
+	
+	print("[1] Project Section")
+	print("[2] Supplier Section")
+	print("[3] Logbook Section")
+	print("[0] Exit")
+	print()
+
+	choice = int(input("Choice: "))
+	print()
+	
+	if choice == 1:
+		plants.menu()
+	elif choice == 2:
+		supplier.menu()
+	elif choice == 3:
+		logbook.menu()
+	elif choice == 0:
+		print("Goodbye!")
+		break
+    
         
