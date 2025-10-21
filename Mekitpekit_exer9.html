@@ -1,0 +1,146 @@
+<!--
+Edmarc Justine B. Mekitpekit
+Y-1L
+HTML program that handles a party reservation form, uses checkbox buttons and asks for required inputs like name and party date and time.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 8 CMSC12</title>
+    <link rel="stylesheet" type="text/css" href="mekitpekit_ex9.css">
+</head>
+<body>
+    <h1>Party Reservation &#129668;&#127881;</h1>
+    <form>
+        <fieldset class="customerInfo">
+            <legend>Customer Information</legend>
+            <label for="name" id="labelname">Name:</label>
+            <br>
+            <input type="text" name="customerName" id="name" required>
+            <br>
+            <label for="mobileNum" id="labelmobileNum">Mobile Number:</label>
+            <br>
+            <input type="text" placeholder="09XXXXXXXXX" name="mobilenum" id="mobileNum" pattern="^09\d{9}" required >
+            <br>
+            <label for="emailAdd" id="labelemailAdd">Email Address:</label>
+            <br>
+            <input type="email" name="emailadd" id="emailAdd" required> 
+            <br>
+            <span id="cake">&#127874;</span>
+        </fieldset>
+        <fieldset class='partydetails'>
+            <legend>Party Details</legend>
+
+            <label for="numPeople">Number of People</label>
+            <br>
+            <input type="text" name="numpeople" id="numPeople">
+            <br>
+
+            Appetizer
+            <br>
+            <input type="radio" name="appetizer" id="salad" value="Salad" checked>
+            <label for="salad">Salad</label>
+            <br>
+            <input type="radio" name="appetizer" id="bread" value="Bread">
+            <label for="bread">Bread w/Dip</label>
+            <br>
+            <input type="radio" name="appetizer" id="tomato" value="Tomato">
+            <label for="tomato">Tomato Surprise</label>
+            <br>
+            <input type="radio" name="appetizer" id="mushroom" value="Mushroom">
+            <label for="mushroom">Mushroom Bites</label>
+            <br>
+
+            Main Dishes
+            <br>
+            <input type="checkbox" name="mainDish" id="roast" value="roastBeef">
+            <label for="roast">Roast Beef</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="beef" value="beefSteak">
+            <label for="beef">Beef Steak</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="pork" value="porkSpareribs">
+            <label for="pork">Pork Spareribs</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="marbella" value="porkMarbella">
+            <label for="marbella">Pork Marbella</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="chicken" value="grilledChicken">
+            <label for="chicken">Grilled Chicken</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="roastchick" value="roastChicken">
+            <label for="roastchick">Roast Chicken</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="broiled" value="broiledSalmon">
+            <label for="broiled">Broiled Salmon</label>
+            <br>
+            <input type="checkbox" name="mainDish" id="grilledsalmon" value="grilledSalmon">
+            <label for="grilledsalmon">Grilled Salmon</label>
+            <br>
+
+            Desserts
+            <br>
+            <input type="checkbox" name="dessert" id="choccake" value="moltenChocolateCake">
+            <label for="choccake">Molten Chocolate Cake</label>
+            <br>
+            <input type="checkbox" name="dessert" id="velvetcake" value="velvetCake">
+            <label for="velvetcake">Red Velvet Cake</label>
+            <br>
+            <input type="checkbox" name="dessert" id="lemonbars" value="lemonBars">
+            <label for="lemonbars">Lemon Bars</label>
+            <br>
+            <input type="checkbox" name="dessert" id="peanutbars" value="peanutBars">
+            <label for="peanutbars">Peanut Butter Bars</label>
+            <br>
+            <input type="checkbox" name="dessert" id="bukopie" value="bukoPie">
+            <label for="bukopie">Buko Pie</label> 
+            <br>
+            <input type="checkbox" name="dessert" id="meringue" value="Meringue">
+            <label for="maringue">Lemon Meringue Pie</label>
+            <br>
+
+            Type of Rice
+            <br>
+            <input type="radio" name="rice" id="plain" value="plainrice" checked>
+            <label for="plain">Plain</label>
+            <br>
+            <input type="radio" name="rice" id="garlic" value="garlicrice">
+            <label for="garlic">Garlic</label> 
+            <br>
+            <input type="radio" name="rice" id="bagooong" value="bagoongrice">
+            <label for="bagooong">Bagoong</label> 
+            <br>
+
+            Drinks
+            <br>
+            <input type="checkbox" name="drinks" id="cucumber" value="cucumberlemonade" checked>
+            <label for="cucumber">Cucumber Lemonade</label> 
+            <br>
+            <input type="checkbox" name="drinks" id="icedtea" value="redicedtea">
+            <label for="icedtea">Red Iced Tea</label> 
+            <br>
+            <input type="checkbox" name="drinks" id="mangojuice" value="ripemangojuice">
+            <label for="mangojuice">Ripe Mango Juice</label> 
+        </fieldset>
+        <fieldset class="deliverydetails">
+            <legend>Delivery Details</legend>
+            <label for="venue">Venue Address</label>
+            <br>
+            <textarea name="address" id="venue" rows="5" cols="20" placeholder="Address here..." required></textarea>
+            <br>
+            <label for="partydate">Party Date</label>
+            <br>
+            <input type="date" name="date" id="partydate" required>
+            <br>
+            <label for="partytime">Party Time</label>
+            <br>
+            <input type="time" name="time" id="partytime" required>
+        </fieldset>
+        <button type="submit" name="submitbtn" id="submit">Submit</button>
+        <button type="reset" name="resetbtn" id="reset">Reset</button>
+    </form>
+    
+</body>
+</html>
