@@ -24,16 +24,20 @@ def addProject(projectdic):
             print("Status can only be Prep, Ongoing, or Finished.")
     print("Choose services for", proj_type, "project: ")
     
+    services = {}
+
     if proj_type == "Construction":
-        services = construction
+        for i in range(0, len(construction)):
+            services[construction[i]] = ""
     elif proj_type == "Renovation":
-        services = renovation
+        for i in range(0, len(renovation)):
+            services[renovation[i]] = ""
     elif proj_type == "Demolition":
-        services = demolition
+        for i in range(0, len(demolition)):
+            services[demolition[i]] = ""
     
 
     projectdic[proj_id] = {
-        "project_id": proj_id,
         "project_type": proj_type,
         "project_status": proj_status,
         "services" : services
@@ -43,3 +47,19 @@ def addProject(projectdic):
 
     return projectdic
 
+def deleteProject(projectdic, logbookdic):
+    while True:
+        project_id = input("Enter Project ID you want to delete: ")
+
+        if project_id in projectdic:
+            del projectdic[project_id]
+            for key in logbookdic:
+                if logbookdic[key]["project_id"] == project_id:
+                    del logbookdic[key]
+            print("Project has been deleted.")
+            break
+                
+        else:
+            print("Project ID does not exist.")
+
+def deleteAllProject():
