@@ -1,6 +1,7 @@
 import arts, plants, logbook, supplier
-logbook = {}
-
+logbookdic = {}
+projectdic = {}
+supplierdic = {}
 print(arts.logo)
 
 while True:
@@ -18,7 +19,7 @@ while True:
 	print()
 	
 	if choice == 1:
-		plants.menu()
+		plants.menu(projectdic,supplierdic,logbookdic)
 	elif choice == 2:
 		supplier.menu()
 	elif choice == 3:

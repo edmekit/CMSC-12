@@ -6,9 +6,27 @@ renovation = ['Permits','Masonry','Carpentry','WindowWork',
 'MetalWork','ElectricalWork','PaintWork']
 demolition = ['Permits','SiteClearing','Earthwork']
 
-def addProject(projectdic):
+def menu(projectdic,supplierdic, logbookdic):
+    while True:
+        print(arts.logo)
+        print("\tProject Section")
+        print("\t1. Add Project")
+        print("\t2. Delete All Projects")
+        print("\t3. Delete Project")
+        print("\t4. Back")
+
+        choice = int(input("Choice: "))
+        if choice == 1:
+            addProject(projectdic, logbookdic)
+        elif choice == 2:
+            deleteAllProject(projectdic, logbookdic)
+        elif choice == 3:
+            deleteProject(projectdic, logbookdic)
+        elif choice == 4:
+            break
+def addProject(projectdic, logbookdic):
     print(arts.logo)
-    proj_id = len(projectdic) + 1
+    proj_id = "P" + str(len(projectdic) + 1)
     while True:
         proj_type = input("Enter project type: ")
         if proj_type in types:
@@ -43,7 +61,7 @@ def addProject(projectdic):
         "services" : services
     }
 
-    logbook.AddProject()
+    logbook.addLogEntry("add_project", proj_id, "NA", "NA", logbookdic)
 
     return projectdic
 
@@ -62,4 +80,20 @@ def deleteProject(projectdic, logbookdic):
         else:
             print("Project ID does not exist.")
 
-def deleteAllProject():
+def deleteAllProject(projectdic, logbookdic):
+    for key in logbookdic:
+        if logbookdic[key]["project_id"] != "NA": #mali
+            del logbookdic[key]
+    projectdic.clear()    
+    print("All projects have been deleted.")
+
+def viewProject(projectdic):
+    proj_id = input("Enter Project ID you want to view: ")
+
+    if proj_id in projectdic:
+        print("\t Project ID:", proj_id)
+        print("\t Project Type:", projectdic[proj_id]["project_type"])
+        print("\t Project Status:", projectdic[proj_id]["project_status"])
+        print("\t Services: ")
+        for k,v in projectdic[proj_id]["services"].items():
+            print("\tType:", k, "Supplier:", v)
