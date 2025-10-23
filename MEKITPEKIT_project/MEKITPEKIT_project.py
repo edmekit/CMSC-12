@@ -9,9 +9,9 @@ while True:
 	print("What would you like to do?")
 	print()
 	
-	print("[1] Project Section")
-	print("[2] Supplier Section")
-	print("[3] Logbook Section")
+	print("\t[1] Project Section")
+	print("\t[2] Supplier Section")
+	print("\t[3] Logbook Section")
 	print("[0] Exit")
 	print()
 

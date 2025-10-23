@@ -8,7 +8,7 @@ def addLogEntry(action, projID, suppID, remark, logbookdic):
         print("Invalid action. Please try again.")
         action = input("Action: ")
     
-    log_id = len(logbookdic) + 1
+    log_id = "L" + str(len(logbookdic) + 1)
     logbookdic[log_id] = {
         "action": action,
         "project_id": projID,
