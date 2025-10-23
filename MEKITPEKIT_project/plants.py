@@ -108,4 +108,52 @@ def viewProject(projectdic):
         print("Project ID does not exist.")
     
 def viewAllprojects(projectdic):
-    
+    for key in projectdic:
+        print("\t Project ID:", key)
+        print("\t Project Type:", projectdic[key]["project_type"])
+        print("\t Project Status:", projectdic[key]["project_status"])
+        print("\t Services: ")
+        for k,v in projectdic[key]["services"].items():
+            print(f"\t\tType: {k}, Supplier: {v}")
+
+def updateStatus(projectdic):
+    proj_ID = input("Enter Project ID: ")
+    if proj_ID in projectdic:
+        while True:
+            proj_status = input("Enter project status: ")
+            if proj_status in statuses:
+                break
+            else:
+                print("Status can only be Prep, Ongoing, or Finished.")
+        projectdic[proj_ID]["project_status"] = proj_status
+    else:
+        print("Project ID does not exist. Check projects info.")
+
+def changeSupplier(projectdic, supplierdic, blacklisted):
+    proj_id = input("Enter Project ID you want to change supplier: ")
+
+    if proj_id in projectdic:
+        if projectdic["project_status"] != "Finished":
+            service = input("Enter which service you want to change supplier: ")
+            if service in projectdic[proj_id]["services"]:
+                print("Here are the suppliers that can provide",service ,"service: ")
+            else:
+                print("Service does not exist. Check project info.")
+
+            for key in supplierdic: # loop the supplier dictionary and look for suppliers that can provide the service
+                if service in supplierdic[key]["services_provided"]:
+                    print("\t", supplierdic[key]["supplier_name"])
+            while True:
+                change_supplier = input("Choose which supplier to change service to: ")
+                if change_supplier in blacklisted:
+                    print("Supplier is blacklisted. Please choose another supplier.")
+                else:
+                    projectdic[proj_id]["services"][service] = change_supplier
+                    break
+        else:
+            print("Project is finished. Cannot change supplier.")
+    else:
+        print("Project ID does not exist. Check projects info.")
+                
+
+
