@@ -2,6 +2,7 @@ import arts, plants, logbook, supplier
 logbookdic = {}
 projectdic = {}
 supplierdic = {}
+blacklisted = []
 print(arts.logo)
 
 while True:
@@ -12,14 +13,14 @@ while True:
 	print("\t[1] Project Section")
 	print("\t[2] Supplier Section")
 	print("\t[3] Logbook Section")
-	print("[0] Exit")
+	print("\t[0] Exit")
 	print()
 
 	choice = int(input("Choice: "))
 	print()
 	
 	if choice == 1:
-		plants.menu(projectdic,supplierdic,logbookdic)
+		plants.menu(projectdic,supplierdic,logbookdic, blacklisted)
 	elif choice == 2:
 		supplier.menu()
 	elif choice == 3:
