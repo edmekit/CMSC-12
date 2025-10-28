@@ -5,8 +5,16 @@ supplierdic = {}
 blacklisted = []
 print(arts.logo)
 
+logbook.loadProjects(projectdic)
+logbook.loadSuppliers(supplierdic)
+logbook.loadLog(logbookdic)
+
+for log in logbookdic:
+	if logbookdic[log]["action"] == "blacklist_supplier":
+		blacklisted.append(logbookdic[log]["supplier_id"])
+
 while True:
-	print("Welcone!")
+	print("Welcome!")
 	print("What would you like to do?")
 	print()
 	
@@ -22,9 +30,9 @@ while True:
 	if choice == 1:
 		plants.menu(projectdic,supplierdic,logbookdic, blacklisted)
 	elif choice == 2:
-		supplier.menu()
+		supplier.menu(supplierdic, logbookdic)
 	elif choice == 3:
-		logbook.menu()
+		logbook.menu(projectdic, supplierdic, logbookdic)
 	elif choice == 0:
 		print("Goodbye!")
 		break

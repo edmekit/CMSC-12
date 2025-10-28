@@ -1,6 +1,5 @@
 import arts, logbook
 
-
 def menu(projectdic,supplierdic, logbookdic, blacklisted):
     while True:
         print(arts.logo)
@@ -24,15 +23,15 @@ def menu(projectdic,supplierdic, logbookdic, blacklisted):
         elif choice == 3:
             deleteProject(projectdic, logbookdic)
         elif choice == 4:
-            viewProject(projectdic)
+            viewProject(projectdic,supplierdic)
         elif choice == 5:
-            viewAllprojects(projectdic)
+            viewAllprojects(projectdic,supplierdic)
         elif choice == 6:
-            updateStatus(projectdic)
+            updateStatus(projectdic, logbookdic)
         elif choice == 7:
-            changeSupplier(projectdic, supplierdic, blacklisted)
+            changeSupplier(projectdic, supplierdic, logbookdic, blacklisted)
         elif choice == 8:
-            changeType(projectdic,supplierdic, blacklisted)
+            changeType(projectdic,supplierdic, logbookdic, blacklisted)
         elif choice == 0:
             print("Goodbye!")
             break
@@ -77,6 +76,8 @@ def addProject(projectdic, logbookdic):
 
     logbook.addLogEntry("add_project", proj_id, "NA", "NA", logbookdic)
 
+    logbook.saveProjects(projectdic)
+
 def deleteProject(projectdic, logbookdic):
     project_id = input("Enter Project ID you want to delete: ")
 
@@ -89,8 +90,11 @@ def deleteProject(projectdic, logbookdic):
         for i in project_delete: #loop throught the list and delete the log entries of the project in logbook
             del logbookdic[i]  
         print("Project has been deleted.")
+        logbook.saveProjects(projectdic)
+        logbook.saveLog(logbookdic)
     else:
         print("Project ID does not exist. View projects info.")
+
 
 def deleteAllProject(projectdic, logbookdic):
     projects_delete = []
@@ -103,8 +107,10 @@ def deleteAllProject(projectdic, logbookdic):
 
     projectdic.clear()    
     print("All projects have been deleted.")
+    logbook.saveProjects(projectdic)
+    logbook.saveLog(logbookdic)
 
-def viewProject(projectdic):
+def viewProject(projectdic, supplierdic):
     proj_id = input("Enter Project ID you want to view: ")
 
     if proj_id in projectdic:
@@ -114,11 +120,14 @@ def viewProject(projectdic):
         print("\t Project Status:", projectdic[proj_id]["project_status"])
         print("\t Services: ")
         for k,v in projectdic[proj_id]["services"].items():
-            print(f"\t\tType: {k}, Supplier: {v}")
+            if v == "":
+                print(f"\t\tType: {k}, Supplier: None yet.")
+            else:
+                print(f"\t\tType: {k}, Supplier: {supplierdic[v]["supplier_name"]}")
     else: 
         print("Project ID does not exist. Check projects info.")
     
-def viewAllprojects(projectdic):
+def viewAllprojects(projectdic, supplierdic):
     if len(projectdic) == 0:
         print("No projects found. Add a project first.")
     else:
@@ -129,9 +138,13 @@ def viewAllprojects(projectdic):
             print("\t Project Status:", projectdic[key]["project_status"])
             print("\t Services: ")
             for k,v in projectdic[key]["services"].items():
-                print(f"\t\tType: {k}, Supplier: {v}")
+                if v == "":
+                    print(f"\t\tType: {k}, Supplier: None yet.")
+                else:
+                    print(f"\t\tType: {k}, Supplier: {supplierdic[v]["supplier_name"]}")
+            print()
 
-def updateStatus(projectdic):
+def updateStatus(projectdic, logbookdic):
     proj_id = input("Enter Project ID: ")
     if proj_id in projectdic:
         while True:
@@ -143,10 +156,15 @@ def updateStatus(projectdic):
                 break
             else:
                 print("Status can only be Prep, Ongoing, or Finished.")
+        logbook.addLogEntry("update_status", proj_id, "NA","NAl",logbookdic)
+        logbook.saveProjects(projectdic)
     else:
         print("Project ID does not exist. Check projects info.")
 
-def changeSupplier(projectdic, supplierdic, blacklisted):
+def changeSupplier(projectdic, supplierdic,logbookdic, blacklisted):
+    if len(supplierdic) == 0:
+        print("No suppliers yet. Add a supplier first.")
+        return
     proj_id = input("Enter Project ID you want to change supplier: ")
 
     if proj_id in projectdic:
@@ -156,15 +174,18 @@ def changeSupplier(projectdic, supplierdic, blacklisted):
                 print("Here are the suppliers that can provide",service ,"service: ")
                 for key in supplierdic:  # loop the supplier dictionary and look for suppliers that can provide the service
                     if service in supplierdic[key]["services_provided"]:
-                        print("\t", supplierdic[key]["supplier_name"])
+                        print(f"\tID: {key}, Name: {supplierdic[key]["supplier_name"]}")
                 while True:
-                    change_supplier = input(f"Choose which supplier to change {service} service to: ")
+                    change_supplier = input(f"Enter ID of supplier to change {service} service to: ")
 
                     if change_supplier in blacklisted:
                         print("Supplier is blacklisted. Please choose another supplier.")
                     else:
                         projectdic[proj_id]["services"][service] = change_supplier
+                        print("Supplier has been changed.")
                         break
+                logbook.addLogEntry("change_supplier", proj_id, change_supplier, service, logbookdic)
+                logbook.saveProjects(projectdic)
             else:
                 print("Service does not exist. Check project info.")  
         else:
@@ -172,7 +193,7 @@ def changeSupplier(projectdic, supplierdic, blacklisted):
     else:
         print("Project ID does not exist. Check projects info.")
 
-def changeType(projectdic,supplierdic, blacklisted):
+def changeType(projectdic,supplierdic,logbookdic, blacklisted):
     proj_id = input("Enter Project ID you want to change type: ")
 
     if proj_id in projectdic:
@@ -218,6 +239,8 @@ def changeType(projectdic,supplierdic, blacklisted):
                             print(f"{supplierdic[supplier]["supplier_name"]} cannot provide {key} service. Please choose another supplier.")
                     else:
                         print("Supplier ID does not exist. Please choose another supplier.")
+            logbook.addLogEntry("change_type", proj_id, "NA", "NA", logbookdic)
+            logbook.saveProjects(projectdic)    
         else:
             print("Project type can only be changed while in prep stage.")
     else:
