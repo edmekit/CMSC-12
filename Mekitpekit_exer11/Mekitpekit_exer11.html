@@ -9,12 +9,12 @@ HTML program that handles a party reservation form, uses checkbox buttons and as
 <head>
     <meta charset="utf-8">
     <title>Exercise 9 CMSC12</title>
-    <link rel="stylesheet" type="text/css" href="mekitpekit_ex9.css">
-    <script src="Mekitpekit_script.js"></script>
+    <link rel="stylesheet" type="text/css" href="mekitpekit_ex11.css">
+    <script src="Mekitpekit_script_ex11.js"></script>
 </head>
 <body>
     <h1>Party Reservation &#129668;&#127881;</h1>
-    <form id="form1">
+    <form id="form1" onsubmit="clicksubmit();">
         <fieldset class="customerInfo">
             <legend>Customer Information</legend>
             <label for="name" id="labelname">Name:</label>
@@ -155,7 +155,7 @@ HTML program that handles a party reservation form, uses checkbox buttons and as
     <script type="text/javascript">
         document.getElementById('form1').addEventListener('submit', function(event){
             event.preventDefault();
-            clicksubmit();
+            
         });
     </script>
     
