@@ -112,8 +112,6 @@ function checkMode(){
 		return "delivery";
 	}}
 
-
-
 function getDeliveryDetails(){
 	var venue = document.getElementById("venue").value; 
 	var date = document.getElementById("partydate").value; 
